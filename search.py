@@ -1,23 +1,34 @@
 import pandas as pd
 import eel
 
-### デスクトップアプリ作成課題
-def kimetsu_search(word):
-    # 検索対象取得
-    df=pd.read_csv("./source.csv")
-    source=list(df["name"])
 
+### デスクトップアプリ作成課題
+def kimetsu_search(word, csv_name):
+    #検索対象取得
+    df=pd.read_csv("./{}".format(csv_name))
+    source=list(df["name"])
+    # source = ["たんじろう",
+    #           "ねずこ",
+    #           "ぎゆう",
+    #           "いのすけ",
+    #           "かんろじ",
+    #           "かがや",
+    #           "むざん",
+    #           "炭治郎"]
     # 検索
     if word in source:
-        print("『{}』はあります".format(word))
+        print("『{}』はいます".format(word))
+        eel.view_log_js("『{}』はいます".format(word))
     else:
         print("『{}』はありません".format(word))
+        eel.view_log_js("『{}』はいません".format(word))
+        eel.view_log_js("『{}』を追加します".format(word))
         # 追加
-        #add_flg=input("追加登録しますか？(0:しない 1:する)　＞＞　")
-        #if add_flg=="1":
+        # add_flg=input("追加登録しますか？(0:しない 1:する)　＞＞　")
+        # if add_flg=="1":
         source.append(word)
-    
-    # CSV書き込み
+
+    #CSV書き込み
     df=pd.DataFrame(source,columns=["name"])
-    df.to_csv("./source.csv",encoding="utf_8-sig")
+    df.to_csv("./{}".format(csv_name),encoding="utf_8-sig")
     print(source)

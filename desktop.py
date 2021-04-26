@@ -2,7 +2,7 @@
 
 import eel
 import sys
-import socket 
+import socket
 
 # 定数
 ENTRY_POINT = 'index.html'

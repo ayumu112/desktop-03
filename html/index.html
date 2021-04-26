@@ -5,15 +5,25 @@
     </head>
     <body>
         <h2>eelテスト</h2>
+        <div class="serach_word">
+            <input id="csv_name" type="text" placeholder="CSVファイル名"><br/>
+   　　      <input  id="search_name" name="search" size="30" placeholder="名前を入力" required="required">　
+            <button id="search">検索</button><br/>
+
+        </div>
+        <textarea class="text_area" id="result" rows="30" cols="40"></textarea>
+
         <script type="text/javascript" src="./eel.js"></script>
         <script>
             search.addEventListener('click', () => {
-
+            eel.kimetsu_search(search_name.value, csv_name.value)
             })
 
             eel.expose(view_log_js)
             function view_log_js(text){
+                result.value += text + "\n"
             }
         </script>
+
     </body>
 </html>
